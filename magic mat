@@ -1,0 +1,49 @@
+//magmat
+#include<stdio.h>
+#include<conio.h>
+void main(){
+    int n,i,j;
+    int mat[10][10];
+    int sumRow,sumCol,sumDiag1=0,sumDiag2=0;
+    int magic=1,targetSum;
+    clrscr();
+    printf("Enter the order of the square matrix (n x n):");
+    scanf("%d",&n);
+    printf("Enter elements of the matrix:\n");
+    for(i=0;i<n;i++){
+	for(j=0;j<n;j++){
+	    scanf("%d",&mat[i][j]);
+	}
+    }
+    targetSum=0;
+    for(j=0;j<n;j++){
+	targetSum+=mat[0][j];
+    }
+    for(i=0;i<n;i++){
+	sumRow=0;
+	sumCol=0;
+	for(j=0;j<n;j++){
+	    sumRow+=mat[i][j];
+	    sumCol+=mat[j][i];
+	}
+	if(sumRow!=targetSum||sumCol!=targetSum){
+	    magic=0;
+	    break;
+	}
+    }
+    for(i=0;i<n;i++){
+	sumDiag1+=mat[i][i];
+	sumDiag2+=mat[i][n-i-1];
+    }
+    if(sumDiag1!=targetSum||sumDiag2!=targetSum){
+	magic=0;
+    }
+    if(magic)
+	printf("\nThe given matrix IS a Magic Matrix.\n");
+    else
+	printf("\nThe given matrix is NOT a Magic Matrix.\n");
+    getch();
+}
+MAGICMAT.C
+Displaying MAGICMAT.C.
+Next 
