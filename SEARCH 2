@@ -1,0 +1,57 @@
+//LINEAR SEARCH
+
+#include <stdio.h>
+#include <conio.h>
+
+void main() {
+    int arr[5] = {10, 20, 30, 40, 50};
+    int key = 30;
+    int i, found = -1;
+
+    clrscr();
+
+    for(i = 0; i < 5; i++) {
+        if(arr[i] == key) {
+            found = i;
+            break;
+        }
+    }
+
+    if(found != -1)
+        printf("Found at index %d", found);
+    else
+        printf("Not Found");
+
+    getch();
+}
+
+//BINARY SEARCH
+#include <stdio.h>
+#include <conio.h>
+
+void main() {
+    int arr[5] = {10, 20, 30, 40, 50};
+    int low = 0, high = 4, mid, key = 40;
+    int found = -1;
+
+    clrscr();
+
+    while(low <= high) {
+        mid = (low + high) / 2;
+
+        if(arr[mid] == key) {
+            found = mid;
+            break;
+        } else if(arr[mid] < key)
+            low = mid + 1;
+        else
+            high = mid - 1;
+    }
+
+    if(found != -1)
+        printf("Found at index %d", found);
+    else
+        printf("Not Found");
+
+    getch();
+}
