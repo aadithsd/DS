@@ -1,0 +1,91 @@
+//Row major:
+#include <stdio.h>
+
+int main() {
+int mat[2][3] = {{1, 2, 3}, {4, 5, 6}};
+int base = (int)&mat[0][0];
+int size = sizeof(int);
+
+for (int i = 0; i < 2; i++) {
+for (int j = 0; j < 3; j++) {
+int addr = base + (i * 3 + j) * size;
+printf("mat[%d][%d] = %d at address %d\n", i, j, mat[i][j], addr);
+}
+}
+return 0;
+}
+
+//Column major:
+#include <stdio.h>
+
+int main() {
+int mat[2][3] = {{1, 2, 3}, {4, 5, 6}};
+int base = (int)&mat[0][0];
+int size = sizeof(int);
+
+for (int j = 0; j < 3; j++) {
+for (int i = 0; i < 2; i++) {
+int addr = base + (j * 2 + i) * size;
+
+printf("mat[%d][%d] = %d at address %d\n", i, j, mat[i][j], addr);
+}
+}
+return 0;
+}
+
+//Bubble sort:row wise
+#include <stdio.h>
+
+int main() {
+int arr[2][4] = {{4, 2, 3, 1}, {8, 6, 7, 5}};
+
+for (int i = 0; i < 2; i++) {
+for (int pass = 0; pass < 3; pass++) {
+for (int j = 0; j < 3 - pass; j++) {
+if (arr[i][j] > arr[i][j + 1]) {
+int temp = arr[i][j];
+arr[i][j] = arr[i][j + 1];
+arr[i][j + 1] = temp;
+}
+}
+}
+}
+
+printf("Row-wise sorted array:\n");
+for (int i = 0; i < 2; i++) {
+for (int j = 0; j < 4; j++)
+printf("%d ", arr[i][j]);
+
+printf("\n");
+}
+return 0;
+}
+
+
+//Bubble sort: column wise
+#include <stdio.h>
+
+int main() {
+int arr[4][2] = {{4, 8}, {2, 6}, {3, 7}, {1, 5}};
+
+for (int j = 0; j < 2; j++) {
+for (int pass = 0; pass < 3; pass++) {
+for (int i = 0; i < 3 - pass; i++) {
+if (arr[i][j] > arr[i + 1][j]) {
+int temp = arr[i][j];
+arr[i][j] = arr[i + 1][j];
+arr[i + 1][j] = temp;
+}
+}
+}
+}
+
+printf("Column-wise sorted array:\n");
+for (int i = 0; i < 4; i++) {
+for (int j = 0; j < 2; j++)
+printf("%d ", arr[i][j]);
+printf("\n");
+
+}
+return 0;
+}
