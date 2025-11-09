@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <conio.h>
+#include <string.h>
+#include <ctype.h>
+
+#define MAX 50
+
+int stack[MAX];
+int top = -1;
+
+void push(int n)
+{
+    stack[++top] = n;
+}
+
+int pop()
+{
+    return stack[top--];
+}
+
+int main()
+{
+    char exp[MAX];
+    int i, op1, op2, res;
+    clrscr();
+
+    printf("Enter postfix expression: ");
+    gets(exp);
+
+    for(i = 0; exp[i] != '\0'; i++)
+    {
+        if(isdigit(exp[i]))
+            push(exp[i] - '0');
+        else
+        {
+            op2 = pop();
+            op1 = pop();
+
+            switch(exp[i])
+            {
+                case '+': res = op1 + op2; break;
+                case '-': res = op1 - op2; break;
+                case '*': res = op1 * op2; break;
+                case '/': res = op1 / op2; break;
+            }
+            push(res);
+        }
+    }
+
+    printf("\nResult = %d", pop());
+    getch();
+    return 0;
+}
