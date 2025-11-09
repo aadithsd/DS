@@ -87,3 +87,47 @@ void main() {
 }
 
 
+
+//SHELL SORT
+
+#include <stdio.h>
+#include <conio.h>
+
+int main()
+{
+    int arr[50], n, i, j, gap, temp;
+    clrscr();
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter %d elements:\n", n);
+    for(i = 0; i < n; i++)
+        scanf("%d", &arr[i]);
+
+    for(gap = n / 2; gap > 0; gap /= 2)
+    {
+        for(i = gap; i < n; i++)
+        {
+            for(j = i - gap; j >= 0; j = j - gap)
+            {
+                if(arr[j + gap] > arr[j])
+                    break;
+                else
+                {
+                    temp = arr[j];
+                    arr[j] = arr[j + gap];
+                    arr[j + gap] = temp;
+                }
+            }
+        }
+    }
+
+    printf("\nSorted elements:\n");
+    for(i = 0; i < n; i++)
+        printf("%d ", arr[i]);
+
+    getch();
+    return 0;
+}
+
