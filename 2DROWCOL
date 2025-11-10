@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <conio.h>
+
+int main() {
+    int r, c, i, j, k, temp;
+    int arr[10][10];
+
+    printf("Enter number of rows: ");
+    scanf("%d", &r);
+    printf("Enter number of columns: ");
+    scanf("%d", &c);
+
+    printf("Enter elements of the matrix:\n");
+    for (i = 0; i < r; i++) {
+        for (j = 0; j < c; j++) {
+            scanf("%d", &arr[i][j]);
+        }
+    }
+
+    // ---------- Row-wise Bubble Sort ----------
+    for (k = 0; k < r; k++) {
+        for (i = 0; i < c - 1; i++) {
+            for (j = 0; j < c - i - 1; j++) {
+                if (arr[k][j] > arr[k][j + 1]) {
+                    temp = arr[k][j];
+                    arr[k][j] = arr[k][j + 1];
+                    arr[k][j + 1] = temp;
+                }
+            }
+        }
+    }
+
+    printf("\nMatrix after Row-wise Bubble Sort:\n");
+    for (i = 0; i < r; i++) {
+        for (j = 0; j < c; j++) {
+            printf("%d\t", arr[i][j]);
+        }
+        printf("\n");
+    }
+
+    // ---------- Column-wise Bubble Sort ----------
+    for (k = 0; k < c; k++) {
+        for (i = 0; i < r - 1; i++) {
+            for (j = 0; j < r - i - 1; j++) {
+                if (arr[j][k] > arr[j + 1][k]) {
+                    temp = arr[j][k];
+                    arr[j][k] = arr[j + 1][k];
+                    arr[j + 1][k] = temp;
+                }
+            }
+        }
+    }
+
+    printf("\nMatrix after Colu
